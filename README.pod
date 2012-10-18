@@ -1,0 +1,130 @@
+=head1 MooseX::ShortCut::BuildInstance
+
+A shortcut to build Moose instances
+
+=head1 DESCRIPTION
+
+This module is used to compose Moose instances on the fly.
+
+=head1 Methods
+
+=head2 Exported Methods
+
+=head3 build_instance( %args|\%args )
+
+B< Definition: > This method is used to create a Moose instance on the fly.  
+I<It assumes that you do not have the class pre-built and will look for the 
+needed information to compose a new class as well.>  Basically this passes the 
+%args intact to build_class and then runs 
+$returned_class_name - > new( %remaining_args );
+
+B< Accepts: > a hash or hashref of arguments.  They must include the 
+necessary information to build a class.  I<(if you already have a class just 
+call $class -> > I<new(); instead of this method!)> This hashref can also 
+contain any attribute settings for the instance as well.
+
+
+B< Returns: > This will return a blessed instance of your new class with 
+the passed attributes set.
+
+=head3 build_class( %args|\%args )
+
+B< Definition: > This method is used to compose a Moose class on the fly.  
+By itself it is redundant to the L<Moose::Meta::Class> - > class(%args) method.  
+The use of this method is best when paired with build_instance.  This function takes the passed arguments and strips out three potential key value pairs.  It 
+then uses the L<Moose::Meta::Class> module to build a new composed class.  The 
+one additional value here is that most key value pairs are optional!  The caveat 
+being that some functionality must be passed either through a role or a class.  
+This function will handle any other missing key/value pairs not passed.
+
+B< Accepts: > a hash or hashref of arguments.  The three key value pairs 
+use are;
+
+=over
+
+B< package > - This is the name (a string) that the new instance of 
+a this class is blessed under.  If this key is not provided the package 
+will generate a generic name.
+
+B< superclasses > - this is intentionally the same key from 
+L<Moose::Meta::Class>.  It expects the same values. (Must be Moose classes)
+
+B< roles > - this is intentionally the same key from L<Moose::Meta::Class>.  
+It expects the same values. (Must be Moose roles)
+
+=back
+
+B< Returns: > This will check the caller and see if it wants an array or a 
+scalar.  In array context it returns the new class name and a hash ref of the 
+unused hash key - value pairs.  These are presumably the arguments for the 
+instance.  If the requested return is a scalar it just returns the name of 
+the newly created class.
+
+=head2 Further Documentation
+
+see the L<source and POD|https://github.com/jandrew/MooseX-ShortCut-BuildInstance/blob/master/lib/MooseX/ShortCut/BuildInstance.pm>
+
+=head1 SYNOPSIS
+    
+	#!perl
+	use Modern::Perl;
+
+	package Mineral;
+	use Moose;
+
+	has 'type' =>( is => 'ro' );
+
+	package Identity;
+	use Moose::Role;
+
+	has 'name' =>( is => 'ro' );
+
+	use MooseX::ShortCut::BuildInstance qw( build_instance );
+	use Test::More;
+	use Test::Moose;
+
+	my 	$paco = build_instance(
+			package => 'Pet::Rock',
+			superclasses =>['Mineral'],
+			roles =>['Identity'],
+			type => 'Quartz',
+			name => 'Paco',
+		);
+
+	does_ok( $paco, 'Identity', 'Check that the ' . $paco->meta->name . ' has an -Identity-' );
+	say 'My ' . $paco->meta->name . ' made from -' . $paco->type . '- (a ' .
+	( join ', ', $paco->meta->superclasses ) . ') is called -' . $paco->name . '-';
+	done_testing();
+    
+	##########################################################################
+	#     Output of SYNOPSIS
+	# 01:ok 1 - Check that the Pet::Rock has an -Identity-
+	# 02:My Pet::Rock made from -Quartz- (a Mineral) is called -Paco-
+	# 03:1..1
+	##########################################################################
+
+=head1 Install from Source
+
+(for example git)
+
+=over
+
+=item B<1.> Download a compressed file with the code
+	
+=item B<2.> Extract the code from the compressed file
+
+=item B<3.> cd into the extracted directory
+
+=back
+
+(For Windows find what version of make was used to compile your perl)
+
+	perl  -V:make
+
+Then
+
+	perl Makefile.PL
+	make
+	make test
+	make install
+	make clean

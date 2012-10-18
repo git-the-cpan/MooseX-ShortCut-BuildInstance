@@ -1,0 +1,16 @@
+Revision history for MooseX-ShortCut-BuildInstance
+
+v0.001_001 2012-10-04 10:34:09 America/Los_Angeles
+
+Initial version with exported build_class and build_instance methods
+
+v0.003_001 2012-10-08 16:44:58 America/Los_Angeles
+
+Changed the name from MooseX-Util-ClassBuilder to 
+MooseX-ShortCut-BuildInstance
+
+Changed the package name key from class_name to package
+
+v0.003_003 2012-10-18 10:37:24 America/Los_Angeles
+
+Updated the documentation
