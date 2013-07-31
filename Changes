@@ -18,3 +18,7 @@ Updated the documentation
 v0.005_003 2012-12-31 13:29:19 America/Los_Angeles
 
 Another minor documentation update
+
+v0.007_003 2013-07-30 15:09:14 America/Los_Angeles
+
+Added the DCI programming concept as an improved explanation and removed the use Modern::Perl requirement
