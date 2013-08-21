@@ -21,4 +21,14 @@ Another minor documentation update
 
 v0.007_003 2013-07-30 15:09:14 America/Los_Angeles
 
-Added the DCI programming concept as an improved explanation and removed the use Modern::Perl requirement
+Added the DCI programming concept as an improved explanation 
+and removed the use Modern::Perl requirement
+
+0.008.001 2013-08-21 07:56:46 America/Los_Angeles
+
+Updated from a development release to a production release 
+and fixed some of the problems making it not index on CPAN.
+
+0.008.001 2013-08-21 08:15:57 America/Los_Angeles
+
+Another cool change
