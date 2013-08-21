@@ -31,4 +31,9 @@ and fixed some of the problems making it not index on CPAN.
 
 0.008.005 2013-08-21 14:33:25 America/Los_Angeles
 
+Improved POD for the README and the main module 
+documentation
+
+0.008.007 2013-08-21 14:44:56 America/Los_Angeles
+
 Another cool change
