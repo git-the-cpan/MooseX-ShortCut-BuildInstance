@@ -29,6 +29,6 @@ and removed the use Modern::Perl requirement
 Updated from a development release to a production release 
 and fixed some of the problems making it not index on CPAN.
 
-0.008.001 2013-08-21 08:15:57 America/Los_Angeles
+0.008.005 2013-08-21 14:33:25 America/Los_Angeles
 
 Another cool change
