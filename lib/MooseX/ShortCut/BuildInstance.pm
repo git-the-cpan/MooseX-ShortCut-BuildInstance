@@ -1,6 +1,6 @@
 ##### main package
 package MooseX::ShortCut::BuildInstance;
-use version 0.94; our $VERSION = qv('0.012.002');
+use version 0.94; our $VERSION = qv('v0.014.002');
 use 5.010;
 use Moose;
 use Moose::Meta::Class;
@@ -100,7 +100,7 @@ sub build_instance{
 sub should_re_use_classes{
 	my ( $bool, ) = @_;
 	### <where> - setting re_use_classes to; $bool
-	$re_use_classes = $bool;
+	$re_use_classes = ( $bool ) ? 1 : 0 ;
 }
 
 #########1 Phinish strong     3#########4#########5#########6#########7#########8#########9
@@ -289,17 +289,17 @@ triggered by the environmental variable to comfort non-believers.  Setting the
 variable $ENV{Smart_Comments} will load and turn on smart comment reporting.  
 There are three levels of 'Smartness' available in this module '### #### #####'.
 
-=head4 MooseX::ShortCut::BuildInstance::instance_count
+=head4 $MooseX::ShortCut::BuildInstance::instance_count
 
 This is an integer that increments and appends to the anonymous package name 
 for each new anonymous package created.
 
-=head4 MooseX::ShortCut::BuildInstance::built_classes
+=head4 $MooseX::ShortCut::BuildInstance::built_classes
 
 This is a hashref that tracks the class names ('package's) built buy this class 
 to manage duplicate build behaviour.
 
-=head4 MooseX::ShortCut::BuildInstance::re_use_classes
+=head4 $MooseX::ShortCut::BuildInstance::re_use_classes
 
 This is a boolean (1|0) variable that tracks if the class should overwrite or 
 re-use a package name (and the defined class) from a prior 'build_class' call.  
@@ -342,8 +342,6 @@ jandrew@cpan.org
 =back
 
 =head1 COPYRIGHT
-
-
 
 This program is free software; you can redistribute
 it and/or modify it under the same terms as Perl itself.
