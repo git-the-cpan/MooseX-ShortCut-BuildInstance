@@ -1,4 +1,4 @@
-package Mineral;
+package Vegetable;
 use Moose;
 use MooseX::StrictConstructor;
 

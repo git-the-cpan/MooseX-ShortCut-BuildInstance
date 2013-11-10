@@ -36,4 +36,16 @@ documentation
 
 0.008.007 2013-08-21 14:44:56 America/Los_Angeles
 
-Another cool change
+Still more POD improvements
+
+0.012.002 2013-11-09 17:55:56 America/Los_Angeles
+
+added the key 'add_roles_in_sequence' as a
+	'build_class' argument to allow for one role to
+	'require' a method from another role
+	see POD for more explanation
+added a method to manage behaviour of resetting or 
+	re-use of Moose Classes built with a duplicate 
+	'package' name.  The default is to overwrite 
+	with a warning.
+Improved POD definitions of the global variables used.
