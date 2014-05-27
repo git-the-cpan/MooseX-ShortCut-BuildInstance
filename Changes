@@ -59,3 +59,13 @@ v0.014.002 2013-11-09 19:23:46 America/Los_Angeles
 
 	* Forced Boolean context on the 
 		$MooseX::ShortCut::BuildInstance::re_use_classes setter
+
+v1.2.2    2014-05-27 13:26:13-07:00 America/Los_Angeles
+
+	+ Changing revisions to follow the convention
+		+ New feature.
+		- Removed/deprecated feature.
+		! Bug fix.
+		* Place holder
+	+ Added an add_methods call to build_class
+	+ Added an add_attributes call to build_class
