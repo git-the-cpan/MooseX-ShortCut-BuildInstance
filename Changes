@@ -69,3 +69,8 @@ v1.2.2    2014-05-27 13:26:13-07:00 America/Los_Angeles
 		* Place holder
 	+ Added an add_methods call to build_class
 	+ Added an add_attributes call to build_class
+
+v1.4.2    2014-05-28 17:12:29-07:00 America/Los_Angeles
+
+	! changed use version 0.94 to use version to fix CPAN testers fails
+	! changed types test to accept a broader range of error messages for NameSpace fails
