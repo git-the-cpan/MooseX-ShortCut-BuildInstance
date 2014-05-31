@@ -2,7 +2,7 @@ package MooseX::ShortCut::BuildInstance::Types;
 BEGIN {
   $MooseX::ShortCut::BuildInstance::Types::AUTHORITY = 'cpan:JANDREW';
 }
-use version; our $VERSION = version->declare("v1.4.2");
+use version; our $VERSION = version->declare("v1.6.2");
 use strict;
 use warnings;
 use Type::Utils -all;

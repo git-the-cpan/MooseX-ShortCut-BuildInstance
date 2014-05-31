@@ -74,3 +74,11 @@ v1.4.2    2014-05-28 17:12:29-07:00 America/Los_Angeles
 
 	! changed use version 0.94 to use version to fix CPAN testers fails
 	! changed types test to accept a broader range of error messages for NameSpace fails
+
+v1.6.2    2014-05-30 18:46:44-07:00 America/Los_Angeles
+
+	! fixed the build_class documentation
+		changed the second 'add_roles_in_sequence' to 'add_methods'
+	- changed $instance_count to $anonymous_class_count
+	! changed our $anonymous_class_count to start at 0 since there isn't one at startup
+	+ added a test for $anonymous_class_count
