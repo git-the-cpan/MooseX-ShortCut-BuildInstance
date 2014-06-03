@@ -82,3 +82,9 @@ v1.6.2    2014-05-30 18:46:44-07:00 America/Los_Angeles
 	- changed $instance_count to $anonymous_class_count
 	! changed our $anonymous_class_count to start at 0 since there isn't one at startup
 	+ added a test for $anonymous_class_count
+
+v1.8.2    2014-06-03 04:35:45-07:00 America/Los_Angeles
+
+	+ updated the README to include a suggested tar unzip string
+	+ switched the load order of add_roles_in_sequence and add_attributes and add_methods
+		The goal is to let the roles also 'require' ad_hoc' methods and methods from attributes
