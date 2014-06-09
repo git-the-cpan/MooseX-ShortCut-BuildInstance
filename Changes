@@ -87,4 +87,9 @@ v1.8.2    2014-06-03 04:35:45-07:00 America/Los_Angeles
 
 	+ updated the README to include a suggested tar unzip string
 	+ switched the load order of add_roles_in_sequence and add_attributes and add_methods
-		The goal is to let the roles also 'require' ad_hoc' methods and methods from attributes
+		The goal is to let the roles also 'require' 'ad_hoc' stand alone methods and methods from attributes
+
+v1.10.2   2014-06-09 08:35:00-07:00 America/Los_Angeles
+
+	! checked for mutability when building/adding roles and attributes
+		and force mutability if not available
