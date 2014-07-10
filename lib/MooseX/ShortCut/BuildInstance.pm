@@ -3,7 +3,7 @@ package MooseX::ShortCut::BuildInstance;
 BEGIN {
   $MooseX::ShortCut::BuildInstance::AUTHORITY = 'cpan:JANDREW';
 }
-use version; our $VERSION = qv("v1.12.2");
+use version; our $VERSION = qv("v1.14.2");
 use 5.010;
 use Moose;
 use Moose::Meta::Class;
