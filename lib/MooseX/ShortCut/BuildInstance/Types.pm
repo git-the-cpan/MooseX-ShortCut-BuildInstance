@@ -2,11 +2,11 @@ package MooseX::ShortCut::BuildInstance::Types;
 BEGIN {
   $MooseX::ShortCut::BuildInstance::Types::AUTHORITY = 'cpan:JANDREW';
 }
-use version; our $VERSION = version->declare("v1.16.2");
+use version; our $VERSION = qv("v1.18.2");
 use strict;
 use warnings;
-use Type::Utils -all;
-use Type::Library
+use Type::Utils 0.046 -all;
+use Type::Library 0.046
 	-base,
 	-declare => qw(
 		NameSpace
@@ -16,7 +16,7 @@ use Type::Library
 		Methods
 		BuildClassDict
 	);
-use Types::Standard -types;
+use Types::Standard 0.046 -types;
 if( $ENV{ Smart_Comments } ){
 	use Smart::Comments -ENV;#'###'
 	### Smart-Comments turned on for MooseX-ShortCut-BuildInstance-Types ...
@@ -129,7 +129,7 @@ B<Test:> This is a hash ref of attributes to be added to the built class
 
 B<Accepts:> the hash keys will be treated as the attribute names and the values 
 will be treated as the attribute settings.  Only HashRefs are accepted as values 
-but no testing of the HashRef for suitability as attribute settins is done prior 
+but no testing of the HashRef for suitability as attribute settings is done prior 
 to implementation by $meta-E<gt>add_attribute( $value ).
 
 =back
@@ -209,11 +209,7 @@ This software is copyrighted (c) 2014 by Jed Lund
 
 L<version>
 
-L<Type::Utils>
-
-L<Type::Library>
-
-L<Types::Standard>
+L<Type::Tiny>
 
 =back
 

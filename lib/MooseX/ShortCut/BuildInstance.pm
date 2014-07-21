@@ -3,7 +3,7 @@ package MooseX::ShortCut::BuildInstance;
 BEGIN {
   $MooseX::ShortCut::BuildInstance::AUTHORITY = 'cpan:JANDREW';
 }
-use version; our $VERSION = qv("v1.16.2");
+use version; our $VERSION = qv("v1.18.2");
 use 5.010;
 use Moose;
 use Moose::Meta::Class;
@@ -23,7 +23,7 @@ use Types::Standard qw(
     );
 use Data::Dumper;
 use lib	'../../../lib',;
-use MooseX::ShortCut::BuildInstance::Types qw(
+use MooseX::ShortCut::BuildInstance::Types 1.018 qw(
 		BuildClassDict
 	);
 if( $ENV{ Smart_Comments } ){
@@ -202,7 +202,7 @@ MooseX::ShortCut::BuildInstance - A shortcut to build Moose instances
 
 	has 'name' =>( is => 'ro' );
 
-	use MooseX::ShortCut::BuildInstance qw( build_instance );
+	use MooseX::ShortCut::BuildInstance;
 	use Test::More;
 	use Test::Moose;
 
@@ -214,11 +214,9 @@ MooseX::ShortCut::BuildInstance - A shortcut to build Moose instances
 			name => 'Paco',
 		);
 
-	does_ok( $paco, 'Identity', 'Check that the ' . $paco->meta->name . 
-		' has an -Identity-' );
-	say 'My ' . $paco->meta->name . ' made from -' . $paco->type . '- (a ' .
-		( join ', ', $paco->meta->superclasses ) . ') is called -' . 
-		$paco->name . "-\n";
+	does_ok( $paco, 'Identity', 'Check that the ' . $paco->meta->name . ' has an -Identity-' );
+	print'My ' . $paco->meta->name . ' made from -' . $paco->type . '- (a ' .
+	( join ', ', $paco->meta->superclasses ) . ') is called -' . $paco->name . "-\n";
 	done_testing();
     
     ##############################################################################
@@ -309,9 +307,13 @@ and 'add_roles_in_sequence' and implements them in that order.   The
 implementation of these values is done with L<Moose::Util> 'apply_all_roles' 
 and the meta capability in L<Moose>.
 
-B<Accepts:> a hash or hashref of arguments.  I<These keys are always used 
-to build the class.  They are never passed on to %remaining_args.>  The six 
-key-E<gt>value pairs use are;
+B<Accepts:> a hash or hashref of arguments.  Six keys are stripped from the hash or 
+hash ref of arguments.  I<These keys are always used to build the class.  They are 
+never passed on to %remaining_args.>
+
+=over
+
+B<The first three key-E<gt>value pairs are consumed simultaneously>.  They are;
 
 =over
 
@@ -343,6 +345,13 @@ B<roles:> this is intentionally the same key from Moose::Meta::Class
 B<accepts:> a recognizable (by Moose) class name
 
 =back
+
+=back
+
+B<The second three key-E<gt>value pairs are consumed in the following 
+sequence>.  They are;
+
+=over
 
 B<add_attributes:> this will add attributes to the class using the 
 L<Moose::Meta::Class>-E<gt>add_attribute method.  Because these definitions 
@@ -379,6 +388,8 @@ group. Then these roles are installed one at a time.
 =over
 
 B<accepts:> an array ref list of roles recognizable (by Moose) as roles
+
+=back
 
 =back
 
@@ -437,8 +448,8 @@ to manage duplicate build behaviour.
 This is a boolean (1|0) variable that tracks if the class should overwrite or 
 re-use a package name (and the defined class) from a prior 'build_class' call.  
 If the package name is overwritten it will L<cluck|https://metacpan.org/pod/Carp#SYNOPSIS> 
-in warning.  This can be changed with the exported method L<should_re_use_classes
-|/should_re_use_classes( $bool )>.
+in warning.  The class reuse behaviour can be changed with the exported method 
+L<should_re_use_classes|/should_re_use_classes( $bool )>.
 
 =head4 $MooseX::ShortCut::BuildInstance::make_classes_immutable
 
@@ -511,7 +522,7 @@ L<Moose::Util> - apply_all_roles
 
 L<Moose::Exporter>
 
-L<Types::Standard>
+L<Type::Tiny>
 
 L<Data::Dumper>
 

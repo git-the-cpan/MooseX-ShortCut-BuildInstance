@@ -1,8 +1,8 @@
 #########1 Test File for MooseX::ShortCut::BuildInstance::Types       7#########8#########9
 #!perl
-#~ BEGIN{
+BEGIN{
 	#~ $ENV{ Smart_Comments } = '### #### #####';
-#~ }
+}
 if( $ENV{ Smart_Comments } ){
 	use Smart::Comments -ENV;
 	### Smart-Comments turned on for MooseX-ShortCut-BuildInstance-Types test...
@@ -16,7 +16,7 @@ use Capture::Tiny qw( capture_stderr );
 use Types::Standard -types;
 use	lib 
 		'../../../../lib',;
-use MooseX::ShortCut::BuildInstance::Types v1.2 qw(
+use MooseX::ShortCut::BuildInstance::Types v1.16 qw(
 		NameSpace
 		SuperClassesList
 		RolesList
