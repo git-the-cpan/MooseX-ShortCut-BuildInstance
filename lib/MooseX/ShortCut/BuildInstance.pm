@@ -3,7 +3,7 @@ package MooseX::ShortCut::BuildInstance;
 BEGIN {
   $MooseX::ShortCut::BuildInstance::AUTHORITY = 'cpan:JANDREW';
 }
-use version; our $VERSION = qv("v1.18.2");
+use version; our $VERSION = qv("v1.20.2");
 use 5.010;
 use Moose;
 use Moose::Meta::Class;
@@ -21,6 +21,10 @@ Moose::Exporter->setup_import_methods(
 use Types::Standard qw(
 		Bool
     );
+#~ if( exists $INC{'Type/Tiny/XS.pm'} ){
+	#~ eval "use Type::Tiny::XS 0.010";
+	#~ die "You have loaded Type::Tiny::XS but versions prior to 0.010 will cause this module to fail" if $@;
+#~ }
 use Data::Dumper;
 use lib	'../../../lib',;
 use MooseX::ShortCut::BuildInstance::Types 1.018 qw(
@@ -262,6 +266,11 @@ L<build_class|/build_class( %args|\%args )> separatly and then just call -E<gt>n
 against the resulting class name over and over again.  Another alternative is to 
 leave the 'package' argument out of 'build_instance' and let this class create a 
 unique by-instance anonymous class/package name.
+
+The Types module in this package uses L<Type::Tiny> which can, in the 
+background, use L<Type::Tiny::XS>.  While in general this is a good thing you will 
+need to make sure that Type::Tiny::XS is version 0.010 or newer since the older 
+ones didn't support the 'Optional' method.
 
 =head1 Functions for Export
 

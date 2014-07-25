@@ -2,11 +2,12 @@ package MooseX::ShortCut::BuildInstance::Types;
 BEGIN {
   $MooseX::ShortCut::BuildInstance::Types::AUTHORITY = 'cpan:JANDREW';
 }
-use version; our $VERSION = qv("v1.18.2");
+use version; our $VERSION = qv("v1.20.2");
 use strict;
 use warnings;
-use Type::Utils 0.046 -all;
-use Type::Library 0.046
+use Data::Dumper;
+use Type::Utils -all;
+use Type::Library
 	-base,
 	-declare => qw(
 		NameSpace
@@ -16,11 +17,18 @@ use Type::Library 0.046
 		Methods
 		BuildClassDict
 	);
-use Types::Standard 0.046 -types;
+use Types::Standard -types;
+if( exists $INC{'Type/Tiny/XS.pm'} ){
+	eval "use Type::Tiny::XS 0.010";
+	if( $@ ){
+		die "You have loaded Type::Tiny::XS but versions prior to 0.010 will cause this module to fail";
+	}
+}
 if( $ENV{ Smart_Comments } ){
 	use Smart::Comments -ENV;#'###'
-	### Smart-Comments turned on for MooseX-ShortCut-BuildInstance-Types ...
 }
+#~ ### <where> - going: %INC
+#~ exit 1;
 
 
 #########1 Package Variables  3#########4#########5#########6#########7#########8#########9
@@ -32,22 +40,27 @@ if( $ENV{ Smart_Comments } ){
 declare NameSpace,
 	as Str,
     where{ $_ =~ /^[A-Za-z:]+$/ },
+	#~ inline_as { undef, "$_ =~ /^[A-Za-z:]+\$/" },
 	message{ "-$_- does not match: " . qr/^[A-Za-z:]+$/ };
 	
 declare SuperClassesList,
 	as ArrayRef[ ClassName ],
+	#~ inline_as { undef, "\@{$_} > 0" },
 	where{ scalar( @$_ ) > 0 };
 	
 declare RolesList,
 	as ArrayRef[ RoleName ],
+	#~ inline_as { undef, "\@{$_} > 0" },
 	where{ scalar( @$_ ) > 0 };
 	
 declare Attributes,
 	as HashRef[ HashRef ],
+	#~ inline_as { undef, "\%{$_} > 0" },
 	where{ scalar( keys %$_ ) > 0 };
 	
 declare Methods,
 	as HashRef[ CodeRef ],
+	#~ inline_as { undef, "\%{$_} > 0" },
 	where{ scalar( keys %$_ ) > 0 };
 	
 declare BuildClassDict,
@@ -59,7 +72,7 @@ declare BuildClassDict,
 		add_attributes			=> Optional[ Attributes ],
 		add_methods				=> Optional[ Methods ],
 	],
-	where{ scalar( keys %$_ ) > 0 };
+	where{ scalar( keys( %$_ ) ) > 0 };
 
 #########1 Declared Coercions 3#########4#########5#########6#########7#########8#########9
 
@@ -79,6 +92,13 @@ __END__
 =head1 NAME
 
 MooseX::ShortCut::BuildInstance::Types - The BuildInstance type library
+
+=head1 WARNING
+
+This module uses L<Type::Tiny> which can, in the background, use L<Type::Tiny::XS>.  
+While in general this is a good thing you will need to make sure that 
+Type::Tiny::XS is version 0.010 or newer since the older ones didn't support the 
+'Optional' method.
     
 =head1 DESCRIPTION
 

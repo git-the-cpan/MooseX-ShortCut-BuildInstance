@@ -76,6 +76,11 @@ against the resulting class name over and over again.  Another alternative is to
 leave the 'package' argument out of 'build_instance' and let this class create a 
 unique by-instance anonymous class/package name.
 
+The Types module in this package uses L<Type::Tiny> which can, in the 
+background, use L<Type::Tiny::XS>.  While in general this is a good thing you will 
+need to make sure that Type::Tiny::XS is version 0.010 or newer since the older 
+ones didn't support the 'Optional' method.
+
 =head1 Functions for Export
 
 =head2 build_instance( %args|\%args )

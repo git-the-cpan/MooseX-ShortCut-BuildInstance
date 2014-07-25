@@ -6,6 +6,9 @@ build_requires:
   Capture::Tiny: 0.12
   Moose::Role: 0
   MooseX::StrictConstructor: 0
+  TAP::Formatter::Console: 0
+  TAP::Harness: 0
+  TAP::Parser::Aggregator: 0
   Test::Moose: 0
   Test::More: 0
   Test::Most: 0
@@ -27,10 +30,10 @@ no_index:
 provides:
   MooseX::ShortCut::BuildInstance:
     file: lib/MooseX/ShortCut/BuildInstance.pm
-    version: v1.18.2
+    version: v1.20.2
   MooseX::ShortCut::BuildInstance::Types:
     file: lib/MooseX/ShortCut/BuildInstance/Types.pm
-    version: v1.18.2
+    version: v1.20.2
 requires:
   Carp: 0
   Data::Dumper: 0
@@ -39,9 +42,9 @@ requires:
   Moose::Meta::Class: 0
   Moose::Util: 0
   Smart::Comments: 0
-  Type::Library: 0.046
-  Type::Utils: 0.046
-  Types::Standard: 0.046
+  Type::Library: 0
+  Type::Utils: 0
+  Types::Standard: 0
   lib: 0
   perl: 5.010
   strict: 0
@@ -51,5 +54,5 @@ resources:
   bugtracker: https://github.com/jandrew/MooseX-ShortCut-BuildInstance/issues
   homepage: https://github.com/jandrew/MooseX-ShortCut-BuildInstance
   repository: https://github.com/jandrew/MooseX-ShortCut-BuildInstance.git
-version: v1.18.2
+version: v1.20.2
 x_authority: cpan:JANDREW
