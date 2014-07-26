@@ -122,3 +122,7 @@ v1.22.2   2014-07-25 23:45:41-07:00 America/Los_Angeles
 
 	! Required Type::Tiny Version 0.046 to settle on error messages
 	! Required Type::Tiny::XS version 0.010 in testing but not installation
+
+v1.22.4   2014-07-26 11:13:53-07:00 America/Los_Angeles
+
+	! Fixed missing test plans
