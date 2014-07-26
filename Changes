@@ -117,3 +117,8 @@ v1.20.2   2014-07-24 19:43:22-07:00 America/Los_Angeles
 	! Fix fails associated with Type::Tiny::XS
 		Really just caused the module to fail if Type::Tiny::XS 
 		is loaded with a version earlier than 0.010
+
+v1.22.2   2014-07-25 23:45:41-07:00 America/Los_Angeles
+
+	! Required Type::Tiny Version 0.046 to settle on error messages
+	! Required Type::Tiny::XS version 0.010 in testing but not installation
