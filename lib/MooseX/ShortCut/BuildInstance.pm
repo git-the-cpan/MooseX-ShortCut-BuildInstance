@@ -3,10 +3,13 @@ package MooseX::ShortCut::BuildInstance;
 BEGIN {
   $MooseX::ShortCut::BuildInstance::AUTHORITY = 'cpan:JANDREW';
 }
-use version; our $VERSION = qv("v1.22.6");
+use version; our $VERSION = qv("v1.24.2");
 use 5.010;
 use Moose;
 use Moose::Meta::Class;
+use Types::Standard 0.046 qw(
+		Bool
+    );
 use Carp qw( cluck );
 use Moose::Util qw( apply_all_roles );
 use Moose::Exporter;
@@ -18,12 +21,9 @@ Moose::Exporter->setup_import_methods(
 		'set_class_immutability',
 	],
 );
-use Types::Standard qw(
-		Bool
-    );
 use Data::Dumper;
 use lib	'../../../lib',;
-use MooseX::ShortCut::BuildInstance::Types 1.022 qw(
+use MooseX::ShortCut::BuildInstance::Types v1.24 qw(
 		BuildClassDict
 	);
 if( $ENV{ Smart_Comments } ){

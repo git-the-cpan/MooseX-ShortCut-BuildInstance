@@ -131,3 +131,8 @@ v1.22.6   2014-07-27 07:25:31-07:00 America/Los_Angeles
 
 	! Figured out how to turn off Type::Tiny::XS altogether in testing so that 
 		Failures are constrained to issues with this package only (I hope)
+
+v1.24.2   2014-07-28 09:06:27-07:00 America/Los_Angeles
+
+	! Yet another attempt to fix the non zero wait status 139 segfault errors
+		(On a non XS module no less)
