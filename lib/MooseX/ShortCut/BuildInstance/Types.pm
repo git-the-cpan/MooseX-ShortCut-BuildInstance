@@ -2,7 +2,7 @@ package MooseX::ShortCut::BuildInstance::Types;
 BEGIN {
   $MooseX::ShortCut::BuildInstance::Types::AUTHORITY = 'cpan:JANDREW';
 }
-use version; our $VERSION = qv("v1.26.2");
+use version; our $VERSION = qv("v1.28.2");
 use strict;
 use warnings;
 use Data::Dumper;
@@ -100,6 +100,14 @@ This is the package for managing types in the L<MooseX::ShortCut::BuildInstance>
 package.
 
 =head2 L<Caveat utilitor|http://en.wiktionary.org/wiki/Appendix:List_of_Latin_phrases_(A%E2%80%93E)#C>
+
+All type tests included with this package are considered to be the fixed definition of 
+the types.  Any definition not included in the testing is considered flexible.
+
+This module uses L<Type::Tiny> which can, in the background, use L<Type::Tiny::XS>.  
+While in general this is a good thing you will need to make sure that 
+Type::Tiny::XS is version 0.010 or newer since the older ones didn't support the 
+'Optional' method.
 
 =head2 Types
 
