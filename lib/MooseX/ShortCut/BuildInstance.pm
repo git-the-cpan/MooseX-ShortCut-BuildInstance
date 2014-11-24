@@ -3,7 +3,7 @@ package MooseX::ShortCut::BuildInstance;
 BEGIN {
   $MooseX::ShortCut::BuildInstance::AUTHORITY = 'cpan:JANDREW';
 }
-use version; our $VERSION = qv("v1.28.2");
+use version; our $VERSION = qv("v1.28.4");
 use 5.010;
 use Moose 2.1213;
 use Moose::Meta::Class;
@@ -23,7 +23,7 @@ Moose::Exporter->setup_import_methods(
 );
 use Data::Dumper;
 use lib	'../../../lib',;
-use MooseX::ShortCut::BuildInstance::Types v1.26 qw(
+use MooseX::ShortCut::BuildInstance::Types 1.028 qw(
 		BuildClassDict
 	);
 if( $ENV{ Smart_Comments } ){

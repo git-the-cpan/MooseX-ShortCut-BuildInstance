@@ -142,7 +142,11 @@ v1.26.2   2014-07-28 17:51:16-07:00 America/Los_Angeles
 	! Removed the no Type::Tiny::XS since it wasn't in a differnt package that 
 		passed while this one failed
 
-v1.28.2   2014-10-03 08:15:15-07:00 America/Los_AngelesLos_Angeles
+v1.28.2   2014-10-03 08:15:15-07:00 America/Los_Angeles
 
 	! Fixed heading level on POD
 	! Added minimum Moose dependancy to eliminate CPAN testers fails
+
+v1.28.4   2014-11-24 11:44:50-08:00 America/Los_Angeles
+
+	! Fixed the version to number based for systems that hate 'v'
