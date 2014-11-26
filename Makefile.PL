@@ -33,52 +33,60 @@ my %WriteMakefileArgs = (
     "Types::Standard" => "0.046",
     "lib" => 0,
     "strict" => 0,
-    "version" => 0,
+    "version" => "0.9909",
     "warnings" => 0
   },
   "TEST_REQUIRES" => {
-    "Capture::Tiny" => "0.12",
+    "Capture::Tiny" => 0,
+    "Carp" => 0,
+    "Data::Dumper" => 0,
+    "DateTime" => 0,
+    "List::Util" => "1.33",
+    "Moose" => "2.1213",
+    "Moose::Exporter" => 0,
+    "Moose::Meta::Class" => 0,
     "Moose::Role" => 0,
+    "Moose::Util" => 0,
+    "MooseX::HasDefaults::RO" => 0,
     "MooseX::StrictConstructor" => 0,
-    "TAP::Formatter::Console" => 0,
-    "TAP::Harness" => 0,
-    "TAP::Parser::Aggregator" => 0,
+    "Smart::Comments" => 0,
     "Test::Moose" => 0,
-    "Test::More" => 0,
     "Test::Most" => 0,
-    "Test::Requires" => 0
+    "Type::Library" => "0.046",
+    "Type::Utils" => "0.046",
+    "Types::Standard" => "0.046",
+    "lib" => 0,
+    "version" => "0.9909"
   },
-  "VERSION" => "v1.28.4",
+  "VERSION" => "v1.28.6",
   "test" => {
-    "TESTS" => "t/*.t t/MooseX/ShortCut/*.t t/MooseX/ShortCut/BuildInstance/*.t"
+    "TESTS" => "t/MooseX/ShortCut/BuildInstance/*.t"
   }
 );
 
 
 my %FallbackPrereqs = (
-  "Capture::Tiny" => "0.12",
+  "Capture::Tiny" => 0,
   "Carp" => 0,
   "Data::Dumper" => 0,
+  "DateTime" => 0,
+  "List::Util" => "1.33",
   "Moose" => "2.1213",
   "Moose::Exporter" => 0,
   "Moose::Meta::Class" => 0,
   "Moose::Role" => 0,
   "Moose::Util" => 0,
+  "MooseX::HasDefaults::RO" => 0,
   "MooseX::StrictConstructor" => 0,
   "Smart::Comments" => 0,
-  "TAP::Formatter::Console" => 0,
-  "TAP::Harness" => 0,
-  "TAP::Parser::Aggregator" => 0,
   "Test::Moose" => 0,
-  "Test::More" => 0,
   "Test::Most" => 0,
-  "Test::Requires" => 0,
   "Type::Library" => "0.046",
   "Type::Utils" => "0.046",
   "Types::Standard" => "0.046",
   "lib" => 0,
   "strict" => 0,
-  "version" => 0,
+  "version" => "0.9909",
   "warnings" => 0
 );
 
