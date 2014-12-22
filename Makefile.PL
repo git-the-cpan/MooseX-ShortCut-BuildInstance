@@ -27,17 +27,16 @@ my %WriteMakefileArgs = (
     "Moose::Exporter" => 0,
     "Moose::Meta::Class" => 0,
     "Moose::Util" => 0,
-    "Smart::Comments" => 0,
     "Type::Library" => "0.046",
     "Type::Utils" => "0.046",
     "Types::Standard" => "0.046",
     "lib" => 0,
     "strict" => 0,
-    "version" => "0.9909",
+    "version" => "0.77",
     "warnings" => 0
   },
   "TEST_REQUIRES" => {
-    "Capture::Tiny" => 0,
+    "Capture::Tiny" => "0.12",
     "Carp" => 0,
     "Data::Dumper" => 0,
     "DateTime" => 0,
@@ -51,22 +50,23 @@ my %WriteMakefileArgs = (
     "MooseX::StrictConstructor" => 0,
     "Smart::Comments" => 0,
     "Test::Moose" => 0,
+    "Test::More" => 0,
     "Test::Most" => 0,
     "Type::Library" => "0.046",
     "Type::Utils" => "0.046",
     "Types::Standard" => "0.046",
     "lib" => 0,
-    "version" => "0.9909"
+    "version" => "0.77"
   },
-  "VERSION" => "v1.28.6",
+  "VERSION" => "v1.32.2",
   "test" => {
-    "TESTS" => "t/MooseX/ShortCut/BuildInstance/*.t"
+    "TESTS" => "t/MooseX/ShortCut/*.t t/MooseX/ShortCut/BuildInstance/*.t"
   }
 );
 
 
 my %FallbackPrereqs = (
-  "Capture::Tiny" => 0,
+  "Capture::Tiny" => "0.12",
   "Carp" => 0,
   "Data::Dumper" => 0,
   "DateTime" => 0,
@@ -80,13 +80,14 @@ my %FallbackPrereqs = (
   "MooseX::StrictConstructor" => 0,
   "Smart::Comments" => 0,
   "Test::Moose" => 0,
+  "Test::More" => 0,
   "Test::Most" => 0,
   "Type::Library" => "0.046",
   "Type::Utils" => "0.046",
   "Types::Standard" => "0.046",
   "lib" => 0,
   "strict" => 0,
-  "version" => "0.9909",
+  "version" => "0.77",
   "warnings" => 0
 );
 

@@ -153,5 +153,9 @@ v1.28.4   2014-11-24 11:44:50-08:00 America/Los_Angeles
 
 v1.28.6   2014-11-26 09:19:45-08:00 America/Los_Angeles
 
-	! Explicitly added all pre-reqs to the test fase to pass a clean build
-	
+	! Explicitly added all pre-reqs to the test phase to pass a clean build
+
+v1.32.2   2014-12-22 09:24:36-08:00 America/Los_Angeles
+
+	+ Added better error messages when build_instance fails
+	+ Closed #1 in github by converting from Smart::Comments to Log::Shiras debug reporting!
