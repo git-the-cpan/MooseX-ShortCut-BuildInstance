@@ -2,7 +2,8 @@ package MooseX::ShortCut::BuildInstance::Types;
 BEGIN {
   $MooseX::ShortCut::BuildInstance::Types::AUTHORITY = 'cpan:JANDREW';
 }
-use version; our $VERSION = qv("v1.32.2");
+use version; our $VERSION = qv("v1.34.2");
+
 use strict;
 use warnings;
 use Data::Dumper;
