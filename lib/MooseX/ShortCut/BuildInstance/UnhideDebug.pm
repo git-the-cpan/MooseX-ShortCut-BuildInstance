@@ -1,8 +1,6 @@
 package MooseX::ShortCut::BuildInstance::UnhideDebug;
-BEGIN {
-  $MooseX::ShortCut::BuildInstance::UnhideDebug::AUTHORITY = 'cpan:JANDREW';
-}
-use version; our $VERSION = qv("v1.34.2");
+our $AUTHORITY = 'cpan:JANDREW';
+use version; our $VERSION = qv("v1.34.6");
 
 use 5.010;
 use strict;

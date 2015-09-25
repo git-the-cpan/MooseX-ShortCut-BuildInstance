@@ -1,16 +1,14 @@
 #########1 Main Package       3#########4#########5#########6#########7#########8#########9
 package MooseX::ShortCut::BuildInstance;
-BEGIN {
-  $MooseX::ShortCut::BuildInstance::AUTHORITY = 'cpan:JANDREW';
-}
+our $AUTHORITY = 'cpan:JANDREW';
 # ABSTRACT: A shortcut to build Moose instances
 
-use version 0.77; our $VERSION = qv("v1.34.4");
+use version 0.77; our $VERSION = qv("v1.34.6");
 use 5.010;
 use Moose 2.1213;
 use Moose::Meta::Class;
 use Types::Standard 1.000 qw( Bool );
-use Carp qw( cluck );
+use Carp qw( cluck confess );
 use Moose::Util qw( apply_all_roles );
 use Moose::Exporter;
 Moose::Exporter->setup_import_methods(
@@ -22,13 +20,14 @@ Moose::Exporter->setup_import_methods(
 	],
 );
 use Data::Dumper;
+use Clone 'clone';
 use lib	'../../../lib',;
 use MooseX::ShortCut::BuildInstance::Types 1.034 qw(
 		BuildClassDict
 	);
-use MooseX::ShortCut::BuildInstance::UnhideDebug;
 ###LogSD warn "You uncovered internal logging statements for MooseX::ShortCut::BuildInstance!";
 ###LogSD use Log::Shiras::Telephone;
+#~ ###LogSD use MooseX::ShortCut::BuildInstance::UnhideDebug;
 
 #########1 Package Variables  3#########4#########5#########6#########7#########8#########9
 
@@ -51,7 +50,7 @@ my 	@add_class_args = qw(
 
 sub build_class{
 	
-	my	$args = ( scalar( @_ ) == 1 ) ? $_[0] : { @_ };
+	my	$args = ( scalar( @_ ) == 1 ) ? clone( $_[0] ) : { @_ };
 	###LogSD	my	$phone = Log::Shiras::Telephone->new(
 	###LogSD					name_space 	=> 'build_class', );
 	###LogSD		$phone->talk( level => 'info', message =>[
@@ -149,7 +148,7 @@ sub build_class{
 }
 
 sub build_instance{
-	my	$args = ( ref $_[0] eq 'HASH' ) ? $_[0] : { @_ };
+	my	$args = ( ref $_[0] eq 'HASH' ) ? clone( $_[0] ) : { @_ };
 	###LogSD	my	$phone = Log::Shiras::Telephone->new(
 	###LogSD					name_space 	=> 'build_instance', );
 	###LogSD		$phone->talk( level => 'info', message =>[
@@ -165,7 +164,7 @@ sub build_instance{
 	###LogSD		'Reduced arguments:', $args,
 	###LogSD		'Class building arguments:', $class_args, ] );
 	my $class = build_class( $class_args );
-	###LogSD	$phone->talk( level => 'trace', message =>[
+	###LogSD	$phone->talk( level => 'warn', message =>[
 	###LogSD		"Built class name: $class",
 	###LogSD		"To get instance now applying args:", $args, ] );
 	my $instance;
@@ -182,7 +181,7 @@ sub build_instance{
 		$message =~ s/\)\n;/\);/g;
 		###LogSD	$phone->talk( level => 'fatal', message =>[
 		###LogSD		"Failed to build -$class- for: $message", ] );
-		warn $message;
+		cluck $message;
 	}else{
 		###LogSD	$phone->talk( level => 'trace', message =>[
 		###LogSD		"Built instance:", $instance, ] );
@@ -202,6 +201,7 @@ sub should_re_use_classes{
 sub set_class_immutability{
 	my ( $bool, ) = @_;
 	###LogSD	my	$phone = Log::Shiras::Telephone->new(
+	
 	###LogSD					name_space 	=> 'set_class_immutability', );
 	###LogSD		$phone->talk( level => 'info', message =>[
 	###LogSD			"setting \$make_immutable_classes to; $bool", ] );
@@ -215,9 +215,7 @@ __PACKAGE__->meta->make_immutable;
 
 #########1 Default class      3#########4#########5#########6#########7#########8#########9
 package Anonymous::Shiras::Moose::Class;
-BEGIN {
-  $Anonymous::Shiras::Moose::Class::AUTHORITY = 'cpan:JANDREW';
-}
+our $AUTHORITY = 'cpan:JANDREW';
 use	Moose;
 no	Moose;
 
@@ -234,13 +232,29 @@ MooseX::ShortCut::BuildInstance - A shortcut to build Moose instances
 
 =begin html
 
-<a href="https://travis-ci.org/jandrew/MooseX-ShortCut-BuildInstance"><img alt="Build Status" src="https://travis-ci.org/jandrew/MooseX-ShortCut-BuildInstance.png?branch=master" alt='Travis Build'/></a>
+<a href="https://www.perl.org">
+	<img src="https://img.shields.io/badge/perl-5.10+-brightgreen.svg" alt="perl version">
+</a>
 
-<a href="https://www.perl.org"><img src="https://img.shields.io/badge/perl-5.10+-brightgreen.svg" alt="perl version"></a>
+<a href="https://travis-ci.org/jandrew/MooseX-ShortCut-BuildInstance">
+	<img alt="Build Status" src="https://travis-ci.org/jandrew/MooseX-ShortCut-BuildInstance.png?branch=master" alt='Travis Build'/>
+</a>
 
-<a href='https://coveralls.io/r/jandrew/MooseX-ShortCut-BuildInstance?branch=master'><img src='https://coveralls.io/repos/jandrew/MooseX-ShortCut-BuildInstance/badge.svg?branch=master' alt='Coverage Status' /></a>
+<a href='https://coveralls.io/r/jandrew/MooseX-ShortCut-BuildInstance?branch=master'>
+	<img src='https://coveralls.io/repos/jandrew/MooseX-ShortCut-BuildInstance/badge.svg?branch=master' alt='Coverage Status' />
+</a>
 
-<a href='http://cpants.cpanauthors.org/dist/MooseX-ShortCut-BuildInstance'><img src='http://cpants.cpanauthors.org/dist/MooseX-ShortCut-BuildInstance.png' alt='kwalitee' height="20"/></a>
+<a>
+	<img src="https://img.shields.io/badge/this version-1.34.6-brightgreen.svg" alt="this version">
+</a>
+
+<a href="https://metacpan.org/pod/MooseX::ShortCut::BuildInstance">
+	<img src="https://badge.fury.io/pl/MooseX-ShortCut-BuildInstance.svg?label=cpan version" alt="CPAN version" height="20">
+</a>
+
+<a href='http://cpants.cpanauthors.org/dist/MooseX-ShortCut-BuildInstance'>
+	<img src='http://cpants.cpanauthors.org/dist/MooseX-ShortCut-BuildInstance.png' alt='kwalitee' height="20"/>
+</a>
 
 =end html
 
