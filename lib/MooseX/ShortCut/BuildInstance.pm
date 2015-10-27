@@ -3,7 +3,8 @@ package MooseX::ShortCut::BuildInstance;
 our $AUTHORITY = 'cpan:JANDREW';
 # ABSTRACT: A shortcut to build Moose instances
 
-use version 0.77; our $VERSION = qv("v1.34.6");
+use version 0.77; our $VERSION = version->declare('v1.34.8');
+###LogSD	warn "You uncovered internal logging statements for Spreadsheet::XLSX::Reader::LibXML-$VERSION";
 use 5.010;
 use Moose 2.1213;
 use Moose::Meta::Class;
@@ -179,9 +180,12 @@ sub build_instance{
 			}
 		}
 		$message =~ s/\)\n;/\);/g;
-		###LogSD	$phone->talk( level => 'fatal', message =>[
-		###LogSD		"Failed to build -$class- for: $message", ] );
+		###LogSD	if( 1 ){
+		###LogSD		$phone->talk( level => 'warn', message =>[
+		###LogSD			"Failed to build -$class- for: $message", ] );
+		###LogSD	}else{
 		cluck $message;
+		###LogSD	}
 	}else{
 		###LogSD	$phone->talk( level => 'trace', message =>[
 		###LogSD		"Built instance:", $instance, ] );
@@ -245,7 +249,7 @@ MooseX::ShortCut::BuildInstance - A shortcut to build Moose instances
 </a>
 
 <a>
-	<img src="https://img.shields.io/badge/this version-1.34.6-brightgreen.svg" alt="this version">
+	<img src="https://img.shields.io/badge/this version-1.34.8-brightgreen.svg" alt="this version">
 </a>
 
 <a href="https://metacpan.org/pod/MooseX::ShortCut::BuildInstance">

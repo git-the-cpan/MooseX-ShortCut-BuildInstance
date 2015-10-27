@@ -1,6 +1,6 @@
 package MooseX::ShortCut::BuildInstance::Types;
 our $AUTHORITY = 'cpan:JANDREW';
-use version; our $VERSION = qv("v1.34.6");
+use version; our $VERSION = version->declare('v1.34.8');
 
 use strict;
 use warnings;
@@ -37,27 +37,22 @@ if( $try_xs and exists $INC{'Type/Tiny/XS.pm'} ){
 declare NameSpace,
 	as Str,
     where{ $_ =~ /^[A-Za-z:]+$/ },
-	#~ inline_as { undef, "$_ =~ /^[A-Za-z:]+\$/" },
 	message{ "-$_- does not match: " . qr/^[A-Za-z:]+$/ };
 	
 declare SuperClassesList,
 	as ArrayRef[ ClassName ],
-	#~ inline_as { undef, "\@{$_} > 0" },
 	where{ scalar( @$_ ) > 0 };
 	
 declare RolesList,
 	as ArrayRef[ RoleName ],
-	#~ inline_as { undef, "\@{$_} > 0" },
 	where{ scalar( @$_ ) > 0 };
 	
 declare Attributes,
 	as HashRef[ HashRef ],
-	#~ inline_as { undef, "\%{$_} > 0" },
 	where{ scalar( keys %$_ ) > 0 };
 	
 declare Methods,
 	as HashRef[ CodeRef ],
-	#~ inline_as { undef, "\%{$_} > 0" },
 	where{ scalar( keys %$_ ) > 0 };
 	
 declare BuildClassDict,
